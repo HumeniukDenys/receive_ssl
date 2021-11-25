@@ -1,7 +1,7 @@
-# myconfig.top
+# received_ssl
 [![pipeline status](https://gitlab.com/AIRpwnz/myconfig.top/badges/master/pipeline.svg)](https://gitlab.com/AIRpwnz/myconfig.top/-/commits/master)
 
-The project purpose is to manage `myconfig.top` DNS zone records using IaC
+The project purpose is to manage `received_ssl` DNS zone records using IaC
 approach.
 
 ## Usage
