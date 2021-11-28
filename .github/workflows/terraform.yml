@@ -71,8 +71,10 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
-    - name: Add environment variables   
+    - name: Add api key  
             CLOUDFLARE_API_KEY: !ENV ${{ secrets.CLOUDFLARE_API_KEY }}
+            
+    - name: Add email 
             CLOUDFLARE_EMAIL: !ENV ${{ secrets.CLOUDFLARE_EMAIL }}
  
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
