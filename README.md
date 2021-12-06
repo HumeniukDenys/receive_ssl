@@ -1,5 +1,14 @@
 # received_ssl
-[![pipeline status](https://gitlab.com/AIRpwnz/myconfig.top/badges/master/pipeline.svg)](https://gitlab.com/AIRpwnz/myconfig.top/-/commits/master)
+<table>
+   <tr>
+      <td>environment</td>
+      <td><a href="https://github.com/HumeniukDenys/receive_ssl/blob/main/.github/workflows/terraform.yml">GitHub Actions</a></td>
+   </tr>
+   <tr>
+      <td>master</td>
+      <td><a href="https://github.com/playson-dev/terraform-tools/actions?query=workflow%3Apipeline"><img src="https://github.com/playson-dev/terraform-tools/workflows/Terraform/badge.svg?branch=master" /></a></td>
+   </tr>
+</table>
 
 The project purpose is to manage `received_ssl` DNS zone records using IaC
 approach.
