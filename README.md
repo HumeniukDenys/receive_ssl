@@ -6,7 +6,7 @@
    </tr>
    <tr>
       <td>master</td>
-      <td><a href="https://github.com/HumeniukDenys/receive_ssl/actions?query=workflow%3Apipeline"><img src="https://github.com/playson-dev/terraform-tools/workflows/Terraform/badge.svg?branch=master" /></a></td>
+      <td><a href="https://github.com/HumeniukDenys/receive_ssl/actions?query=workflow%3Apipeline"><img src="https://github.com/HumeniukDenys/receive_ssl/workflows/Terraform/badge.svg?branch=master" /></a></td>
    </tr>
 </table>
 
