@@ -74,8 +74,8 @@ jobs:
     - name: Configuring CF credentials
       uses: cloudflare/wrangler-action@1.2.0
       with: 
-            cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
-            cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
+            CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+            CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
  
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
