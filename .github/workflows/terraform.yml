@@ -63,7 +63,7 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -71,10 +71,10 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
-    - name: Add api key  
+    - name: Configuring CF credentials
+      uses: actions/virtual-environments@v1
+      with: 
             cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
-            
-    - name: Add email 
             cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
  
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
