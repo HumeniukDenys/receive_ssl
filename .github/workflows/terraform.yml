@@ -63,7 +63,7 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -72,7 +72,7 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
     - name: Configuring CF credentials
-      uses: actions/virtual-environments@v2
+      uses: cloudflare/wrangler-action@1.2.0
       with: 
             cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
             cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
