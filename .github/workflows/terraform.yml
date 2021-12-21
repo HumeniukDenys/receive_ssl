@@ -46,3 +46,9 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+    
+    - name: Аrtifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ssl-artifacts
+        path: ./certificates/* # or path/to/artifact
