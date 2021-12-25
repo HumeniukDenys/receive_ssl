@@ -10,9 +10,6 @@
    </tr>
 </table>
 
-The project purpose is to manage `received_ssl` DNS zone records using IaC
-approach.
-
 ## Usage
 
 1. Clone/checkout the project `master` branch and pull the latest changes from
