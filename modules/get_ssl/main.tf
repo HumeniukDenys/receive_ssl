@@ -2,6 +2,21 @@ provider "aws" {
   region = "eu-central-1"
 }
 
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "receive-ssl"
+  versioning {
+    enabled = true
+  }
+  # Enable server-side encryption by default
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+        }
+      }
+    }
+}
+
 provider "acme" {
   #server_url = "https://acme-v02.api.letsencrypt.org/directory"
   server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
