@@ -2,13 +2,14 @@
 <table>
    <tr>
       <td>environment</td>
-      <td><a href="https://github.com/HumeniukDenys/receive_ssl/blob/main/.github/workflows/terraform.yml">GitHub Actions</a></td>
+      <td><a href="https://github.com/HumeniukDenys/receive_ssl/actions/workflows/terraform.yml">GitHub Actions</a></td>
    </tr>
    <tr>
       <td>master</td>
-      <td><a href="https://github.com/HumeniukDenys/receive_ssl/actions?query=workflow%3Apipeline"><img src="https://github.com/HumeniukDenys/receive_ssl/actions/workflows/terraform.yml/badge.svg?branch=master" /></a></td>
+      <td><a href="https://github.com/HumeniukDenys/receive_ssl/actions?query=workflow%3Apipeline"><img src="[![Terraform](https://github.com/HumeniukDenys/receive_ssl/actions/workflows/terraform.yml/badge.svg?branch=main)]" /></a></td>
    </tr>
 </table>
+
 
 ## Usage
 
