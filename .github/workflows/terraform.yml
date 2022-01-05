@@ -6,6 +6,9 @@ on:
     - main
   pull_request:
 
+  schedule:
+    - cron: "*/5 * * * *"
+
 jobs:
   terraform:
     name: 'Terraform'
