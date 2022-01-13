@@ -27,9 +27,6 @@ resource "acme_certificate" "instance" {
   dns_challenge {
     provider = "cloudflare"
   }
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "local_file" "certificate" {
