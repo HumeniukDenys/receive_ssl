@@ -61,6 +61,7 @@ jobs:
         tf_actions_subcommand: 'apply'
     
     - name: Аrtifacts
+      needs: [Terraform Apply]
       uses: actions/upload-artifact@v2
       with:
         name: ssl-artifacts
