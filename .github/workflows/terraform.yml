@@ -11,7 +11,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: Terraform
     runs-on: ubuntu-latest
     env:
       CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
@@ -52,7 +52,7 @@ jobs:
     #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
      # run: terraform apply -auto-approve
      
-    - name: Terraform Plan - https://www.terraform.io/docs/commands/plan.html
+    - name: Terraform Plan
       id: plan
       run: terraform plan -detailed-exitcode -input=false -out=plan.out
       continue-on-error: true
