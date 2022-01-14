@@ -64,10 +64,10 @@ jobs:
     outputs:
       planExitcode: ${{ steps.plan.outputs.exitcode }}
 
-    - name: Terraform: apply
+    - name: Terraform Apply
       needs: plan
       if: needs.plan.outputs.planExitcode == 2
-      runs-on: ubuntu-latest
+      run: terraform apply -auto-approve
      
      
     # Uploads ssl certs in artifacts aafter workflou
