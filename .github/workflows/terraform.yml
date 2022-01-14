@@ -64,7 +64,6 @@ jobs:
     outputs:
       planExitcode: ${{ steps.plan.outputs.exitcode }}
 
-  apply:
     - name: Terraform: apply
       needs: plan
       if: needs.plan.outputs.planExitcode == 2
