@@ -65,7 +65,7 @@ jobs:
       planExitcode: ${{ steps.plan.outputs.exitcode }}
 
   apply:
-    - name: "Terraform: apply"
+    - name: Terraform: apply
       needs: plan
       if: needs.plan.outputs.planExitcode == 2
       runs-on: ubuntu-latest
