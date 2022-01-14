@@ -43,32 +43,14 @@ jobs:
     #  run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-    #- name: Terraform Plan
-    #  run: terraform plan
-
-      # On push to main, build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-   # - name: Terraform Apply
-    #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-     # run: terraform apply -auto-approve
-     
     - name: Terraform Plan
-      id: plan
-      run: terraform plan -detailed-exitcode -input=false -out=plan.out
-      continue-on-error: true
-
-    - name: Check for Plan Failure
-      if: steps.plan.outputs.exitcode == 1
-      run: exit 1
-
-    outputs:
-      planExitcode: ${{ steps.plan.outputs.exitcode }}
-
+      run: terraform plan
+   
+    # On push to main, build or change infrastructure according to Terraform configuration files
+    # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
-      needs: plan
-      if: needs.plan.outputs.planExitcode == 2
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
-     
      
     # Uploads ssl certs in artifacts aafter workflou
     - name: Аrtifacts
