@@ -107,25 +107,25 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -input=false "./planfile/planfile"
       
-    - name: Upload ssl-certs
-      uses: actions/upload-artifact@v2
-      with:
-        name: certificates
-        path: /*
+   # - name: Upload ssl-certs
+   #   uses: actions/upload-artifact@v2
+   #   with:
+   #     name: certificates
+   #     path: /*
         
-    - name: Downloads Аrtifacts Planfile
-      uses: actions/download-artifact@v2
-      with:
-        name: certificates
-        path: /*
+   # - name: Downloads Аrtifacts Planfile
+   #   uses: actions/download-artifact@v2
+   #   with:
+   #     name: certificates
+   #     path: /*
     
-    - name: show files
-      run: cd ./certificates && ls -la
+    #- name: show files
+    #  run: cd ./certificates && ls -la
     
-    - name: push to master
-      run: |
-        git config --global user.name "updater"
-        git config --global user.email "workflow@updater.com"
-        git fetch
-        git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
-        git push
+    #- name: push to master
+    #  run: |
+    #    git config --global user.name "updater"
+    #    git config --global user.email "workflow@updater.com"
+    #    git fetch
+    #    git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
+    #    git push
