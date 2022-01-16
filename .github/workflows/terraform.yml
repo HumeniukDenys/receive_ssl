@@ -93,7 +93,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: planfile
-        path: ./
+        path: /planfile
         
     - name: show files
       run: ls -la
@@ -102,19 +102,19 @@ jobs:
       run: terraform init
 
     - name: Terraform Apply
-      run: terraform apply -input=false "planfile"
+      run: terraform apply -input=false "/planfile/planfile"
       
     - name: Upload ssl-certs
       uses: actions/upload-artifact@v2
       with:
         name: certificates
-        path: ./certificates/*
+        path: /*
         
     - name: Downloads Аrtifacts Planfile
       uses: actions/download-artifact@v2
       with:
         name: certificates
-        path: ./certificates/*
+        path: /*
     
     - name: show files
       run: cd ./certificates && ls -la
