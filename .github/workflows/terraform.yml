@@ -55,8 +55,17 @@ jobs:
     needs: validate_terraform_env
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
     - name: Terraform Plan
       run: terraform plan -out "planfile"
+      
+    - name: Uploads Аrtifacts Planfile
+      uses: actions/upload-artifact@v2
+      with:
+        name: planfile
+        path: planfile
 
   terraform_apply:
     name: 'Terraform apply'
@@ -64,5 +73,14 @@ jobs:
     needs: terraform_plan
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Downloads Аrtifacts Planfile
+      uses: actions/download-artifact@v2
+      with:
+        name: planfile
+        path: planfile
+        
     - name: Terraform Apply
       run: terraform apply -input=false "planfile"
