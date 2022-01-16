@@ -48,11 +48,11 @@ jobs:
       #run: terraform plan
       run: terraform plan -detailed-exitcode -input=false -out=plan.out
       #-detailed-exitcode -input=false -out=plan.out
-      continue-on-error: true
+      continue-on-error: false
       
     - name: Check for Plan Failure
       #if: steps.plan.outputs.exitcode == 1
-      run: echo steps.plan.outputs.exitcode
+      run: cat plan.out
    
     # On push to main, build or change infrastructure according to Terraform configuration files
     # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
