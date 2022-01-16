@@ -125,6 +125,7 @@ jobs:
     #    repository: HumeniukDenys/certs
     - name: Download other repo
       run: |
+        cd ..
         git remote add origin git@github.com:HumeniukDenys/certs.git
         git branch -M main
         git push -u origin main
