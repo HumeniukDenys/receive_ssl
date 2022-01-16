@@ -119,8 +119,10 @@ jobs:
    #     name: certificates
    #     path: /*
     
-    #- name: show files
-    #  run: cd ./certificates && ls -la
+    - name: show files
+      run: |
+        pwd && ls -la 
+        cd ./certificates && pwd && ls -la
     
     #- name: push to master
     #  run: |
