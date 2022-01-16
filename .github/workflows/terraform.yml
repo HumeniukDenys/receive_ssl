@@ -94,6 +94,9 @@ jobs:
       with:
         name: planfile
         path: /planfile
-    
+        
+    - name: show files
+      run: pwd && ls -la
+      
     - name: Terraform Apply
       run: terraform apply -input=false "/home/runner/work/receive_ssl/receive_ssl/planfile/planfile"
