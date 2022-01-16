@@ -103,3 +103,39 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -input=false "/home/runner/work/receive_ssl/receive_ssl/planfile/planfile"
+      
+    - name: Upload ssl-certs
+      uses: actions/upload-artifact@v2
+      with:
+        name: certificates
+        path: ./certificates/*
+  
+  deploy_certs:
+    name: 'Deploy new certs to prod'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    needs: terraform_apply
+    
+    steps:
+    - name: Downloas prod repository 
+      uses: actions/checkout@master
+        with:
+        repository: HumeniukDenys/certs
+    
+    - name: Show files
+      run: pwd && ls -la
+      
+    - name: Downloads Аrtifacts Planfile
+      uses: actions/download-artifact@v2
+      with:
+        name: certificates
+        path: /tmp/certificates/.
+        
+    - name: Show files in tmp
+      run: pwd && ls -la
+ 
+
+
+
