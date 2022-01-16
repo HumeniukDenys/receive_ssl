@@ -97,6 +97,9 @@ jobs:
         
     - name: show files
       run: pwd && ls -la
-      
+
+    - name: Terraform Init
+      run: terraform init
+
     - name: Terraform Apply
       run: terraform apply -input=false "/home/runner/work/receive_ssl/receive_ssl/planfile/planfile"
