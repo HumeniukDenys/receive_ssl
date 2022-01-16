@@ -116,3 +116,8 @@ jobs:
     - name: show files
       run: cd ./certificates && ls -la
     
+    - name: push to master
+      run: |
+        git fetch
+        git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
+        git push
