@@ -73,7 +73,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: planfile
-        path: ./
+        path: planfile
 
   terraform_apply:
     name: 'Terraform apply'
@@ -89,15 +89,18 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
+    - name: show files
+      run: pwd && ls -la
+      
     - name: Downloads Аrtifacts Planfile
       uses: actions/download-artifact@v2
       with:
         name: planfile
-        path: /planfile
+        path: planfile
         
     - name: show files
       run: ls -la
-        
+  
     - name: Terraform Init
       run: terraform init
 
