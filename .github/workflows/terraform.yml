@@ -48,7 +48,7 @@ jobs:
       #run: terraform plan
       run: terraform plan -detailed-exitcode -input=false -out=plan.out
       #-detailed-exitcode -input=false -out=plan.out
-      continue-on-error: false
+      continue-on-error: true
       
     - name: Check for Plan Failure
       #if: steps.plan.outputs.exitcode == 1
