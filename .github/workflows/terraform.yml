@@ -73,7 +73,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: planfile
-        path: ./*
+        path: ./
 
   terraform_apply:
     name: 'Terraform apply'
@@ -93,7 +93,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: planfile
-        path: ./*
+        path: ./
         
     - name: show files
       run: ls -la
