@@ -105,7 +105,7 @@ jobs:
       run: terraform init
 
     - name: Terraform Apply
-      run: terraform apply -input=false "/planfile/planfile"
+      run: terraform apply -input=false "./planfile/planfile"
       
     - name: Upload ssl-certs
       uses: actions/upload-artifact@v2
