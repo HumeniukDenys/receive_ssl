@@ -118,6 +118,8 @@ jobs:
     
     - name: push to master
       run: |
+        git config --global user.name "updater"
+        git config --global user.email "workflow@updater.com"
         git fetch
         git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
         git push
