@@ -73,7 +73,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: planfile
-        path: ./*
+        path: ./planfile
 
   terraform_apply:
     name: 'Terraform apply'
