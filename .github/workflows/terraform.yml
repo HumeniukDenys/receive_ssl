@@ -95,9 +95,6 @@ jobs:
         name: planfile
         path: ./planfile
         
-    - name: show files
-      run: pwd && ls -la
-
     - name: Terraform Init
       run: terraform init
 
@@ -109,3 +106,13 @@ jobs:
       with:
         name: certificates
         path: ./certificates/*
+        
+    - name: Downloads Аrtifacts Planfile
+      uses: actions/download-artifact@v2
+      with:
+        name: certificates
+        path: ./certificates/*
+    
+    - name: show files
+      run: cd ./certificates && ls -la
+    
