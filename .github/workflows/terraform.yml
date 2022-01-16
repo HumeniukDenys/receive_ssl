@@ -93,13 +93,13 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: planfile
-        path: ./planfile
+        path: ./*
         
     - name: Terraform Init
       run: terraform init
 
     - name: Terraform Apply
-      run: terraform apply -input=false "/home/runner/work/receive_ssl/receive_ssl/planfile/planfile"
+      run: terraform apply -input=false "planfile"
       
     - name: Upload ssl-certs
       uses: actions/upload-artifact@v2
