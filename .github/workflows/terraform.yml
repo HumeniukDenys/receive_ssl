@@ -44,6 +44,7 @@ jobs:
 
   validate_terraform_env:
     name: 'Validate terraform'
+    runs-on: ubuntu-latest
     needs: preparing_terraform_env
 
     steps:
@@ -53,6 +54,7 @@ jobs:
 
   terraform_plan:
     name: 'Terraform plan'
+    runs-on: ubuntu-latest
     needs: validate_terraform_env
 
     steps:
@@ -61,6 +63,7 @@ jobs:
 
   terraform_apply:
     name: 'Terraform apply'
+    runs-on: ubuntu-latest
     needs: terraform_plan
 
     steps:
