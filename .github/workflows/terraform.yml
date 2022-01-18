@@ -118,6 +118,10 @@ jobs:
    #   with:
    #     name: certificates
    #     path: /*
+   
+    - name: terraform outputs
+      run: terraform output -json certificate_domain | jq -r '.[0]'
+    
     
     - name: show files
       run: |
@@ -131,3 +135,7 @@ jobs:
     #    git fetch
     #    git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
     #    git push
+
+   # - name: find updating ssl
+    #  run: |
+     #   fin
