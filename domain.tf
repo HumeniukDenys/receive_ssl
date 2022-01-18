@@ -27,3 +27,9 @@ module "newoldfortvppua" {
   source        = "./modules/get_ssl"
   email_address = "admin@fortv.pp.ua"
 }
+
+module "dvafortvppua" {
+  common_name   = "dva.fortv.pp.ua"
+  source        = "./modules/get_ssl"
+  email_address = "admin@fortv.pp.ua"
+}
