@@ -65,7 +65,12 @@ jobs:
       
     - name: Terraform Init
       run: terraform init
-    
+      
+    - name: Terraform remove module
+      run: |
+        terraform destroy -target=module.dvafortvppua.acme_certificate.instance
+        terraform destroy -target=module.dvafortvppua.acme_registration.instance
+        
     - name: Terraform Plan
       run: terraform plan -out "planfile"
       
