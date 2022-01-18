@@ -68,8 +68,8 @@ jobs:
       
     - name: Terraform remove module
       run: |
-        terraform destroy -target=module.dvafortvppua.acme_certificate.instance
-        terraform destroy -target=module.dvafortvppua.acme_registration.instance
+        terraform destroy -target=module.dvafortvppua.acme_certificate.instance -auto-approve
+        terraform destroy -target=module.dvafortvppua.acme_registration.instance -auto-approve
         
     - name: Terraform Plan
       run: terraform plan -out "planfile"
