@@ -120,7 +120,7 @@ jobs:
    #     path: /*
    
     - name: terraform outputs
-      run: terraform output -json ${var.common_name} | jq -r '.[0]'
+      run: terraform output -json $common_name | jq -r '.[0]'
     
     
     - name: show files
