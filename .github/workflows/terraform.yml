@@ -124,8 +124,8 @@ jobs:
    #     name: certificates
    #     path: /*
    
-    - name: terraform outputs
-      run: terraform output -json $common_name
+   # - name: terraform outputs
+   #   run: terraform output -json $common_name
     
     
     - name: show files
@@ -133,13 +133,13 @@ jobs:
         pwd && ls -la 
         cd ./certificates && pwd && ls -la
     
-    #- name: push to master
-    #  run: |
-    #    git config --global user.name "updater"
-    #    git config --global user.email "workflow@updater.com"
-    #    git fetch
-    #    git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
-    #    git push
+    - name: push to master
+      run: |
+        git config --global user.name "updater"
+        git config --global user.email "workflow@updater.com"
+        git fetch
+        git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
+        git push
 
    # - name: find updating ssl
     #  run: |
