@@ -3,7 +3,7 @@ name: 'Automations updating ssl-certs'
 on:
   push:
     branches:
-    - main
+    - testing
   pull_request:
 
   #schedule:
@@ -65,82 +65,6 @@ jobs:
       
     - name: Terraform Init
       run: terraform init
-      
-    - name: Terraform remove module
-      run: |
-        terraform destroy -target=module.newoldfortvppua.acme_certificate.instance -auto-approve
-        terraform destroy -target=module.newoldfortvppua.acme_registration.instance -auto-approve
         
     - name: Terraform Plan
-      run: terraform plan -out "planfile"
-      
-    - name: Uploads Аrtifacts Planfile
-      uses: actions/upload-artifact@v2
-      with:
-        name: planfile
-        path: planfile
-
-  terraform_apply:
-    name: 'Terraform apply'
-    runs-on: ubuntu-latest
-    env:
-      CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-      CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    needs: terraform_plan
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-    - name: show files
-      run: pwd && ls -la
-      
-    - name: Downloads Аrtifacts Planfile
-      uses: actions/download-artifact@v2
-      with:
-        name: planfile
-        path: planfile
-        
-    - name: show files
-      run: ls -la
-  
-    - name: Terraform Init
-      run: terraform init
-
-    - name: Terraform Apply
-      run: terraform apply -input=false "./planfile/planfile"
-      
-   # - name: Upload ssl-certs
-   #   uses: actions/upload-artifact@v2
-   #   with:
-   #     name: certificates
-   #     path: /*
-        
-   # - name: Downloads Аrtifacts Planfile
-   #   uses: actions/download-artifact@v2
-   #   with:
-   #     name: certificates
-   #     path: /*
-   
-   # - name: terraform outputs
-   #   run: terraform output -json $common_name
-    
-    
-    - name: show files
-      run: |
-        pwd && ls -la 
-        cd ./certificates && pwd && ls -la
-    
-    - name: push to master
-      run: |
-        git config --global user.name "updater"
-        git config --global user.email "workflow@updater.com"
-        git fetch
-        git add -A && git commit -m "Update certs $(date +"%Y_%m_%d_%I_%M_%p")"
-        git push
-
-   # - name: find updating ssl
-    #  run: |
-     #   fin
+      run: terraform plan
