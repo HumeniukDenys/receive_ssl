@@ -132,6 +132,7 @@ jobs:
       run: |
         pwd && ls -la 
         cd ./certificates && pwd && ls -la
+        rm -rf ./newold.fortv.pp.ua
     
     - name: push to master
       run: |
