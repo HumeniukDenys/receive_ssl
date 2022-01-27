@@ -134,8 +134,9 @@ jobs:
         cd ./certificates && pwd && ls -la
 
     - name: find updated certs
-      run: NewCerts=$(find . -mmin -1 -type d | sed -r 's/.{,1}//' <(ls))
-        
+      run: |
+        NewCerts=$(find ./certificates -mmin -1 -type d | sed -r 's/.{,1}//' <(ls))
+        echo $NewCerts
     
     - name: push to master
       run: |
