@@ -128,11 +128,14 @@ jobs:
    #   run: terraform output -json $common_name
     
     
-    - name: show files
+    - name: show files 
       run: |
         pwd && ls -la 
         cd ./certificates && pwd && ls -la
-        rm -rf ./newold.fortv.pp.ua
+
+    - name: find updated certs
+      run: NewCerts=$(find . -mmin -1 -type d | sed -r 's/.{,1}//' <(ls))
+        
     
     - name: push to master
       run: |
