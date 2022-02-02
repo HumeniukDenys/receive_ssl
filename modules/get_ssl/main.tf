@@ -46,3 +46,7 @@ resource "local_file" "fullchain" {
   filename          = "${path.root}/certificates/${var.common_name}/${var.common_name}.pem"
   file_permission   = "0600"
 }
+
+output "ssl_for_domain" {
+  value = local_file.certificate.filename
+}
