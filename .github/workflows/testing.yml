@@ -1,0 +1,62 @@
+name: 'Test terraform plan before push to master'
+
+on:
+  push:
+    branches:
+    - testing
+    
+jobs:
+  preparing_terraform_env:
+    name: 'Install terraform'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    environment: production
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+ 
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform init
+      
+
+  validate_terraform_env:
+    name: 'Validate terraform'
+    runs-on: ubuntu-latest
+    needs: preparing_terraform_env
+
+    steps:
+    - name: Terraform Validate
+      run: terraform validate
+
+
+  terraform_plan:
+    name: 'Terraform plan'
+    runs-on: ubuntu-latest
+    needs: validate_terraform_env
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Terraform Init
+      run: terraform init
+        
+    - name: Terraform Plan
+      run: terraform plan
