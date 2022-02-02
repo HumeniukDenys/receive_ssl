@@ -55,6 +55,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
+    - name: Check terraform version
+      rum: terraform -version
+      
     - name: Terraform Init
       run: terraform init
         
