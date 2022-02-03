@@ -154,7 +154,7 @@ jobs:
         git config --global user.name "GitHub Actions"
         git config --global user.email "workflow@autoupdater.me"
         git fetch
-        git add -A && git commit --allow-empty -m "Certificates issued on $(date +"%Y:%m:%d_%I:%M_%p")"
+        git add -A && git commit --allow-empty -m "Certificate issued on $(date +"%Y:%m:%d_%I:%M_%p")"
         git push
 
    # - name: find updating ssl
