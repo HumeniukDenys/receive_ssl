@@ -82,7 +82,7 @@ jobs:
         terraform destroy -target=module.fortvppua.acme_registration.instance -auto-approve
         
     - name: Terraform Plan
-      run: terraform plan -out "./planfile"
+      run: terraform plan -out "./planfile/planfile"
       
     #- name: Uploads Аrtifacts Planfile
     #  uses: actions/upload-artifact@v2
@@ -93,7 +93,7 @@ jobs:
 
   terraform_apply:
     name: 'Terraform apply'
-    #runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     env:
       CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
       CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
