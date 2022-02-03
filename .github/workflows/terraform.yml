@@ -82,18 +82,18 @@ jobs:
         terraform destroy -target=module.fortvppua.acme_registration.instance -auto-approve
         
     - name: Terraform Plan
-      run: terraform plan -out "planfile"
+      run: terraform plan -out "./planfile"
       
-    - name: Uploads Аrtifacts Planfile
-      uses: actions/upload-artifact@v2
-      with:
-        name: planfile
-        path: planfile
-        retention-days: 3
+    #- name: Uploads Аrtifacts Planfile
+    #  uses: actions/upload-artifact@v2
+   #   with:
+    #    name: planfile
+     #   path: planfile
+      #  retention-days: 3
 
   terraform_apply:
     name: 'Terraform apply'
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     env:
       CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
       CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
@@ -101,18 +101,18 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     needs: terraform_plan
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    #steps:
+    #- name: Checkout
+    #  uses: actions/checkout@v2
       
     - name: show files
       run: pwd && ls -la
       
-    - name: Downloads Аrtifacts Planfile
-      uses: actions/download-artifact@v2
-      with:
-        name: planfile
-        path: planfile
+    #- name: Downloads Аrtifacts Planfile
+    #  uses: actions/download-artifact@v2
+    #  with:
+    #    name: planfile
+    #    path: planfile
         
     - name: show files
       run: ls -la
