@@ -70,6 +70,16 @@ jobs:
       run: |
         terraform destroy -target=module.newoldfortvppua.acme_certificate.instance -auto-approve
         terraform destroy -target=module.newoldfortvppua.acme_registration.instance -auto-approve
+        terraform destroy -target=module.onefortvppua.acme_certificate.instance -auto-approve
+        terraform destroy -target=module.onefortvppua.acme_registration.instance -auto-approve
+        terraform destroy -target=module.oldfortvppua.acme_certificate.instance -auto-approve
+        terraform destroy -target=module.oldfortvppua.acme_registration.instance -auto-approve
+        terraform destroy -target=module.newfortvppua.acme_certificate.instance -auto-approve
+        terraform destroy -target=module.newfortvppua.acme_registration.instance -auto-approve
+        terraform destroy -target=module.testfortvppua.acme_certificate.instance -auto-approve
+        terraform destroy -target=module.testfortvppua.acme_registration.instance -auto-approve
+        terraform destroy -target=module.fortvppua.acme_certificate.instance -auto-approve
+        terraform destroy -target=module.fortvppua.acme_registration.instance -auto-approve
         
     - name: Terraform Plan
       run: terraform plan -out "planfile"
@@ -79,6 +89,7 @@ jobs:
       with:
         name: planfile
         path: planfile
+        retention-days: 3
 
   terraform_apply:
     name: 'Terraform apply'
