@@ -21,7 +21,7 @@ All received certificates are located in the catalog "./certificates/*" and incl
 - RSA keys for certificates(*.key);
 - Full-chains certificates(*.pem).
 
-!!! Important: Before you start issuing a certificate, make sure that the domain is delegated to CloudFlare !!!
+!!! IMPORTANT: Before you start issuing a certificate, make sure that the domain is delegated to CloudFlare !!!
 
 ## How it use
 1. Create a branch "testing" and clone the project from the "master" branch into it.
