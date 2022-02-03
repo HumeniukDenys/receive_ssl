@@ -89,6 +89,7 @@ jobs:
       with:
         name: planfile
         path: planfile
+        retention-days: 3
 
   terraform_apply:
     name: 'Terraform apply'
