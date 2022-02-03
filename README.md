@@ -38,8 +38,8 @@ All received certificates are located in the catalog "./certificates/*" and incl
 6. Upon successful completion of the process, the certificates will be placed in the appropriate directory in "./certificates/*"
 
 P.S.: 
-     If you need to change interval to renew certificate, you can do it in "./modules/get_ssl/variables.tf", variable "min_days_remaining" default = 5.
-     If you need to remove a domain from support, you can do it in a few steps:
+    - If you need to change interval to renew certificate, you can do it in "./modules/get_ssl/variables.tf", variable "min_days_remaining" default = 5.
+    - If you need to remove a domain from support, you can do it in a few steps:
       
       - remove module from tfstate;
       - remove module from domain.tf.
