@@ -22,7 +22,7 @@ All received certificates are located in the catalog "./certificates/*" and incl
 - RSA keys for certificates(*.key);
 - Full-chains certificates(*.pem).
 
-!!! Important: Before you start issuing a certificate, make sure that the domain is 
+## !!! Important: Before you start issuing a certificate, make sure that the domain is 
 delegated to CloudFlare !!!
 
 ## How it use
@@ -30,6 +30,7 @@ delegated to CloudFlare !!!
 2. Go to branch "testing" and enter the domain for which you want to issue a 
    certificate in domain.tf. 
    Example: 
+   
        module "needdomaincom" {
          common_name   = "needdomain.com"
          source        = "./modules/get_ssl"
