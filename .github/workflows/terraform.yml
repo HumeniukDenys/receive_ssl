@@ -1,4 +1,4 @@
-name: 'Automations updating ssl-certs'
+name: 'Automation issuing ssl-certs'
 
 on:
   push:
