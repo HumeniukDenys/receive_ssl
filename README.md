@@ -1,4 +1,5 @@
 # received_ssl
+## Information about last run workflow:
 <table>
    <tr>
       <td>environment</td>
@@ -10,17 +11,42 @@
    </tr>
 </table>
 
+## About repo
+This project was designed for automatisation receive or renew ssl certs.
+It works stand-alone and runs once every 3 days on a schedule.
+All certificates that were previously issued through this workflow will be re-issued 
+automatically 5-3 days prior to expiration.
+Workflow can also be launched manually via a pull request or push to the master branch.
+All received certificates are located in the catalog "./certificates/*" and include:
+- Certificates(*.crt);
+- RSA keys for certificates(*.key);
+- Full-chains certificates(*.pem).
 
-## Usage
+!!! Important: Before you start issuing a certificate, make sure that the domain is 
+delegated to CloudFlare !!!
 
-1. Clone/checkout the project `master` branch and pull the latest changes from
-remote.
-2. Create a new branch with name reflecting changes to be applied.
-3. Prepare changes locally, commit them and push to remote.
-4. Review CI/CD pipeline status and make sure that Terraform plan shows only
-expected changes.
-5. Open merge request from your branch to the `master` branch and provide short
-description what changed and why.
-6. Merge changes into the `master` branch, review Terraform plan and manually
-trigger `apply` job to apply changes.
-1
+## How it use
+1. Create a branch "testing" and clone the project from the "master" branch into it.
+2. Go to branch "testing" and enter the domain for which you want to issue a 
+   certificate in domain.tf. 
+   Example: 
+       module "needdomaincom" {
+         common_name   = "needdomain.com"
+         source        = "./modules/get_ssl"
+         email_address = "admin@needdomain.com"
+       }
+3. Check the workflow process in github action, if all is ok, automatically 
+   will be create pull request to "master" brunch.
+4. You can see all changes in pull request. Check pull request, approve it and 
+   close brunch "testing".
+5. After approve pull request will be run workflow to receive ssl cert. 
+   Logs from this process you can see in github action.
+6. Upon successful completion of the process, the certificates will be placed 
+   in the appropriate directory in "./certificates/*"
+
+P.S: If you need to change interval to renew certificate, you can do it in 
+     "./modules/get_ssl/variables.tf", variable "min_days_remaining" default = 5.
+
+     If you need to remove a domain from support, you can do it in a few steps:
+     - remove module from tfstate;
+     - remove module from domain.tf.
