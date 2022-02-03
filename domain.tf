@@ -15,9 +15,3 @@ module "newfortvppua" {
   source        = "./modules/get_ssl"
   email_address = "admin@fortv.pp.ua"
 }
-
-module "oldfortvppua" {
-  common_name   = "old.fortv.pp.ua"
-  source        = "./modules/get_ssl"
-  email_address = "admin@fortv.pp.ua"
-}
